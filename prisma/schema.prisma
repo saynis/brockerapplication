@@ -6,8 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
-
 }
 
 datasource db {
@@ -20,7 +18,7 @@ model employee {
   id        Int      @id @default(autoincrement())
   name      String
   mathernName String
-  dateOfBirth DateTime
+  dateOfBirth String
   age       Int
   placeOfBirth String
   work         String

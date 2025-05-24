@@ -17,7 +17,7 @@ export async function POST(req) {
             imageUrl,
             idimageUrl,
             idNumber,
-            phoneNumb,
+            phoneNumber,
             homeAddress,
             registrationNumber,
             region } = await req.json();
@@ -27,7 +27,7 @@ export async function POST(req) {
             data: {
                 name,
                 mathernName,
-                dateOfBirth: new Date(dateOfBirth),
+                dateOfBirth,
                 age,
                 placeOfBirth,
                 work,
@@ -35,7 +35,7 @@ export async function POST(req) {
                 imageUrl,
                 idimageUrl,
                 idNumber,
-                phoneNumb,
+                phoneNumber,
                 homeAddress,
                 registrationNumber,
                 region
