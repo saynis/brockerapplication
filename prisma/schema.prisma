@@ -14,6 +14,24 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+
+enum Role {
+  USER
+  ADMIN
+}
+
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
 model employee {
   id        Int      @id @default(autoincrement())
   name      String
@@ -21,7 +39,6 @@ model employee {
   dateOfBirth String
   age       Int
   placeOfBirth String
-  work         String
   gender   String
   imageUrl String
   idimageUrl String
@@ -32,7 +49,42 @@ model employee {
   region String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  workExperiences WorkExperience[]
 
+ 
+}
+
+enum Status {
+  ACCEPTED
+  INACTIVE
+  PENDING
+  REJECTED
+}
+
+model WorkExperience {
+  id        Int      @id @default(autoincrement())
+  employeeId Int
+  companyName String
+  position String
+  startDate String
+  endDate String
+  description String
+  status Status @default(PENDING)
+  employee employee @relation(fields: [employeeId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model campany {
+  id        Int      @id @default(autoincrement())
+  name      String
+  registrationNumber String @unique
+  region String
+  address String
+  phoneNumber String
+  campanyType String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
  
 }
 
